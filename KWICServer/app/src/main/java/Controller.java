@@ -7,12 +7,11 @@ import IO.LineStorage;
 import IO.Output;
 
 public class Controller {	
-	
-	//3rd Arg is the function
-	//4th arg for search in the keyword
-	public static void main(String[] args) {
-	
-		if(args.length < 2){
+
+	public void runKWIC(String Command){
+		String[] sepCommand = Command.split(" ");
+		
+		if(sepCommand.length < 2){
 			System.out.println("Incorrect Number of Arguments");
 			return;
 		}
@@ -43,7 +42,7 @@ public class Controller {
 
 
 			// Start process
-			String processName = args[0];
+			String processName = sepCommand[0];
 
 			switch (processName) {
 				case "kwic-processing" -> {
@@ -53,10 +52,10 @@ public class Controller {
                                     outputObj.PrintProcess(sortedProcess);
                         }
 				case "keyword-search" -> {
-                                    if(args.length == 3){
+                                    if(sepCommand.length == 3){
                                         KWICSearcher searcher= (KWICSearcher) OptionReader.getObjectFromStr("KWICSearcher");
-                                        ArrayList<String> searchedLines = searcher.SearchFile(lineStorage, args[1]);
-                                        outputObj.PrintSearch(searchedLines, args[1]);
+                                        ArrayList<String> searchedLines = searcher.SearchFile(lineStorage, sepCommand[1]);
+                                        outputObj.PrintSearch(searchedLines, sepCommand[1]);
                                     }else{
                                         System.out.println("Incorrect Number of Arguments for Search Function");
                                     }
@@ -70,6 +69,5 @@ public class Controller {
 				default -> System.out.println("Unsupported Process");
 			}
 		}
-
 	}
 }
