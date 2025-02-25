@@ -1,0 +1,1 @@
+The Jar file is the app folder, make sure when using the command prompt to be in the app directory
