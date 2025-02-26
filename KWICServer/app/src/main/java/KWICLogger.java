@@ -1,4 +1,4 @@
-package Server;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class KWICLogger {
     private AtomicInteger totalRequests = new AtomicInteger(0);
     private AtomicInteger successfulRequests = new AtomicInteger(0);
-    private String logFile = "log.txt";
+    private final String logFile = "log.txt";
 
     public void logRequest(boolean success) {
         int total = totalRequests.incrementAndGet();
