@@ -41,7 +41,9 @@ public class Client {
                     try {
                         String response;
                         while ((response = in.readLine()) != null) {
-                            receivedLines.add(response);
+                            if(response.isEmpty() == false){
+                                receivedLines.add(response);
+                            }
                         }
                         outputObj.PrintSearch(receivedLines, keyword);
                     } 
